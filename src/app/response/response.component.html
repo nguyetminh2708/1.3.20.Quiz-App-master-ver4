@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-3">
+              <h4 class="card-title" style="margin-top: 15px;">Quiz Response</h4>
+              <h6 class="card-subtitle mb-2 text-muted">Response Of Quiz Given by students</h6>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group" style="text-align: left !important;">
+                <input type='text' class="form-control" style="margin-top: 30px;" placeholder='Search for quiz...'
+                  (keyup)='updateFilter($event)' />
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="table-responsive" style="overflow: hidden !important;">
+            <ngx-datatable #table class='table material fullscreen' style="box-shadow: none;" [columns]="columns"
+              [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [rows]='rows'>
+
+              <ngx-datatable-column prop='student' name="Student">
+                <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                  <span class="text-primary" style="font-weight: bold; font-size: 10px; cursor: pointer;"
+                    (click)="sort()">{{column.name}}</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column prop="marks" name="Marks">
+                <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                  <span class="text-primary" style="font-weight: bold; font-size: 10px; cursor: pointer;"
+                    (click)="sort()">{{column.name}}</span>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

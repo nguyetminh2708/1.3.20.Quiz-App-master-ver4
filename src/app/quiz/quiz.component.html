@@ -1,0 +1,55 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="">
+              <div class="">
+
+                <div *ngIf='loaded' class="text-left">
+                  <form class="form-signin" [formGroup]="form">
+                    <h1 class="h3 mb-3 font-weight-normal text-center"> Attempt Quiz</h1>
+                    <br>
+                    <div class='form-group'>
+                      <div formArrayName='answers'>
+                        <div [formGroupName]='i'
+                          *ngFor="let q of form['controls']['answers']['controls']; let i = index">
+                          <br>
+                          <h6 class='text-muted'>Question {{i+1}}</h6>
+                          <h5 class='text-left'>{{quiz[i]['que']}}</h5>
+                          
+                          <input type="radio" formControlName="answer" value="option1"> {{quiz[i]['option1']}} <br>
+                          <input type="radio" formControlName="answer" value="option2"> {{quiz[i]['option2']}} <br>
+                          <input type="radio" formControlName="answer" value="option3"> {{quiz[i]['option3']}} <br>
+                          <input type="radio" formControlName="answer" value="option4"> {{quiz[i]['option4']}} <br>
+
+                          
+                        </div>
+                      </div>
+                    </div>
+                    <br>
+                    <div class='row text-center'>
+                      <div class="col-md-6">
+                        <button class="btn btn-lg btn-success btn-block" type="submit" [disabled]="form.invalid"
+                          (click)="save()"> Save </button>
+                      </div>
+                      <div class="col-md-6">
+                        <button class="btn btn-lg btn-danger btn-block" type="submit" (click)="cancel()">Cancel</button>
+                      </div>
+                    </div>
+                    <br>
+
+                  </form>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
